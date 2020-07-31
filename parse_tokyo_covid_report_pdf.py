@@ -44,7 +44,7 @@ def main():
     lines = defaultdict(list)
     for table_text in tabel_texts:
         #t_list = table_text.get_text().strip().split()  # たまに一つの LTTextLine に複数テキストがあるので split
-        t_list = table_text.get_text().strip()  # たまに一つの LTTextLine に複数テキストがあるので splitしない
+        t_list = table_text.get_text().split()
         lines[table_text.y1].extend(t_list)
 
     # 各行で対応する要素を出力
