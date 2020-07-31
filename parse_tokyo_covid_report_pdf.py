@@ -41,19 +41,17 @@ def main():
     tabel_texts = filter(lambda b: end_box.y1 < b.y1 <= start_box.y1, first_page_texts)
 
     # 読み取った LTTextLine を 行ごとに区分け
+    lcnt = 0
     lines = defaultdict(list)
     for table_text in tabel_texts:
         t_list = table_text.get_text().strip().split()  # たまに一つの LTTextLine に複数テキストがあるので split
         #t_list = table_text.get_text().split()
         #lines[table_text.y1].extend(t_list)
+        lcnt++
+        logger.warning('t_list: ' + lcnt + ':' + t_list)
+        lines[table_text.y1].extend(t_list)
         for k, v in enumerate(t_list):
-            logger.warning(v)
-            if '(' in v:
-                if k > 0:
-                    lines[table_text.y1].extend(t_list[0:k - 1])
-                    break
-        else:
-            lines[table_text.y1].extend(t_list)
+            logger.warning('>>' + k + ':' + v)
 
     # 各行で対応する要素を出力
     for k1, k2 in pairs(lines):
