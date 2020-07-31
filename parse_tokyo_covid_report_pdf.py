@@ -48,7 +48,7 @@ def main():
         #t_list = table_text.get_text().split()
         #lines[table_text.y1].extend(t_list)
         lcnt = lcnt + 1
-        logger.warning('t_list: ' + str(lcnt) + ':' + t_list)
+        logger.warning('t_list: ' + str(lcnt))
         lines[table_text.y1].extend(t_list)
         for k, v in enumerate(t_list):
             logger.warning('>>' + str(k) + ':' + v)
