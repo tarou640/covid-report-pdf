@@ -45,7 +45,9 @@ def main():
     for table_text in tabel_texts:
         #t_list = table_text.get_text().strip().split()  # たまに一つの LTTextLine に複数テキストがあるので split
         t_list = table_text.get_text().split()
-        lines[table_text.y1].extend(t_list)
+        #lines[table_text.y1].extend(t_list)
+        if t_list.find('(') == -1:
+            lines[table_text.y1].extend(t_list)
 
     # 各行で対応する要素を出力
     for k1, k2 in pairs(lines):
