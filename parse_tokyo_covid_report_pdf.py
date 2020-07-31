@@ -48,10 +48,10 @@ def main():
         #t_list = table_text.get_text().split()
         #lines[table_text.y1].extend(t_list)
         lcnt = lcnt + 1
-        logger.warning('t_list: ' + lcnt + ':' + t_list)
+        logger.warning('t_list: ' + str(lcnt) + ':' + t_list)
         lines[table_text.y1].extend(t_list)
         for k, v in enumerate(t_list):
-            logger.warning('>>' + k + ':' + v)
+            logger.warning('>>' + str(k) + ':' + v)
 
     # 各行で対応する要素を出力
     for k1, k2 in pairs(lines):
