@@ -47,9 +47,11 @@ def main():
         #t_list = table_text.get_text().split()
         #lines[table_text.y1].extend(t_list)
         for k, v in enumerate(t_list):
+            logger.warning(v)
             if '(' in v:
                 if k > 0:
                     lines[table_text.y1].extend(t_list[0:k - 1])
+                    break
         else:
             lines[table_text.y1].extend(t_list)
 
