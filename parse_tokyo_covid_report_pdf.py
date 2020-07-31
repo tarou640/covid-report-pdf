@@ -52,6 +52,8 @@ def main():
         lines[table_text.y1].extend(t_list)
         for k, v in enumerate(t_list):
             logger.warning('>>' + str(k) + ':' + v)
+        for k, v in enumerate([i for i in t_list if '(' not in i]):
+            logger.warning('==' + str(k) + ':' + v)
 
     # 各行で対応する要素を出力
     for k1, k2 in pairs(lines):
