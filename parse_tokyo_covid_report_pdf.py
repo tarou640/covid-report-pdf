@@ -46,10 +46,10 @@ def main():
         t_list = table_text.get_text().strip().split()  # たまに一つの LTTextLine に複数テキストがあるので split
         #t_list = table_text.get_text().split()
         #lines[table_text.y1].extend(t_list)
-        if '(' in t_list:
-            index = t_list.index('(')
-            if index > 0:
-                lines[table_text.y1].extend(t_list[0:index - 1])
+        for k, v in enumerate(t_list):
+            if '(' in v:
+                if k > 0:
+                    lines[table_text.y1].extend(t_list[0:k - 1])
         else:
             lines[table_text.y1].extend(t_list)
 
