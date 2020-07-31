@@ -47,7 +47,7 @@ def main():
         t_list = table_text.get_text().strip().split()  # たまに一つの LTTextLine に複数テキストがあるので split
         #t_list = table_text.get_text().split()
         #lines[table_text.y1].extend(t_list)
-        lcnt++
+        lcnt = lcnt + 1
         logger.warning('t_list: ' + lcnt + ':' + t_list)
         lines[table_text.y1].extend(t_list)
         for k, v in enumerate(t_list):
