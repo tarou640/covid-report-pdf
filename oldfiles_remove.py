@@ -47,7 +47,7 @@ def main():
             rm_files_cnt = rm_files_cnt + 1
             #print('{}を削除します'.format(file[0]))
             logger.warning('{}を削除します'.format(file[0]))
-            #os.remove(file[0])
+            os.remove(file[0])
     
     # 削除ファイル数をログ出力
     logger.warning('PDF削除ファイル数：' + str(rm_files_cnt))
@@ -60,7 +60,7 @@ def main():
     filelists_csv = []
     for file in os.listdir(local_path_csv):
         base, ext = os.path.splitext(file)
-        if ext == '.pdf':
+        if ext == '.csv':
             filelists_csv.append([file, os.path.getctime(local_path_csv)])
     filelists_csv.sort(key=itemgetter(1), reverse=True)
     for i,file in enumerate(filelists_csv):
@@ -68,7 +68,7 @@ def main():
             rm_files_cnt = rm_files_cnt + 1
             #print('{}を削除します'.format(file[0]))
             logger.warning('{}を削除します'.format(file[0]))
-            #os.remove(file[0])
+            os.remove(file[0])
     
     # 削除ファイル数をログ出力
     logger.warning('CSV削除ファイル数：' + str(rm_files_cnt))
