@@ -31,7 +31,7 @@ def main():
 
     rm_files_cnt = 0
 
-    local_path_pdf = Path("pdf")
+    local_path_pdf = Path("./pdf")
     logger.warning('対象パス：' + str(local_path_pdf))
     
     filelists = []
