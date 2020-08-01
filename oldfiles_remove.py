@@ -29,27 +29,49 @@ def main():
     # parser.add_argument('filenames', nargs='+', help='')
     args = parser.parse_args()
 
-    rm_files_cnt = 0
+    MAX_CNT = 30
 
+    # PDF削除
+    rm_files_cnt = 0
     local_path_pdf = Path("./pdf")
     logger.warning('対象パス：' + str(local_path_pdf))
     
-    filelists = []
+    filelists_pdf = []
     for file in os.listdir(local_path_pdf):
         base, ext = os.path.splitext(file)
         if ext == '.pdf':
-            filelists.append([file, os.path.getctime(local_path_pdf)])
-    filelists.sort(key=itemgetter(1), reverse=True)
-    MAX_CNT = 0
-    for i,file in enumerate(filelists):
+            filelists_pdf.append([file, os.path.getctime(local_path_pdf)])
+    filelists_pdf.sort(key=itemgetter(1), reverse=True)
+    for i,file in enumerate(filelists_pdf):
         if i > MAX_CNT - 1:
             rm_files_cnt = rm_files_cnt + 1
-            #print('{}は削除します'.format(file[0]))
-            logger.warning('{}は削除します'.format(file[0]))
-
-    # 削除ファイル数をログ出力＆ダミー戻り値設定
-    logger.warning('削除ファイル数：' + str(rm_files_cnt))
-    print('dummy')
+            #print('{}を削除します'.format(file[0]))
+            logger.warning('{}を削除します'.format(file[0]))
+            #os.remove(file[0])
+    
+    # 削除ファイル数をログ出力
+    logger.warning('PDF削除ファイル数：' + str(rm_files_cnt))
+    
+    # CSV削除
+    rm_files_cnt = 0
+    local_path_csv = Path("./csv")
+    logger.warning('対象パス：' + str(local_path_csv))
+    
+    filelists_csv = []
+    for file in os.listdir(filelists_csv):
+        base, ext = os.path.splitext(file)
+        if ext == '.pdf':
+            filelists_csv.append([file, os.path.getctime(local_path_csv)])
+    filelists_csv.sort(key=itemgetter(1), reverse=True)
+    for i,file in enumerate(filelists_csv):
+        if i > MAX_CNT - 1:
+            rm_files_cnt = rm_files_cnt + 1
+            #print('{}を削除します'.format(file[0]))
+            logger.warning('{}を削除します'.format(file[0]))
+            #os.remove(file[0])
+    
+    # 削除ファイル数をログ出力
+    logger.warning('CSV削除ファイル数：' + str(rm_files_cnt))
 
 
 if __name__ == '__main__':
