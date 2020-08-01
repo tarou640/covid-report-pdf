@@ -58,7 +58,7 @@ def main():
     logger.warning('対象パス：' + str(local_path_csv))
     
     filelists_csv = []
-    for file in os.listdir(filelists_csv):
+    for file in os.listdir(local_path_csv):
         base, ext = os.path.splitext(file)
         if ext == '.pdf':
             filelists_csv.append([file, os.path.getctime(local_path_csv)])
