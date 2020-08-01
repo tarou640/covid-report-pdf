@@ -33,7 +33,7 @@ def main():
     filelists = []
     for file in os.listdir():
         base, ext = os.path.splitext(local_path_pdf)
-        if ext == '.zip':
+        if ext == '.pdf':
             filelists.append([file, os.path.getctime(local_path_pdf)])
     filelists.sort(key=itemgetter(1), reverse=True)
     MAX_CNT = 0
