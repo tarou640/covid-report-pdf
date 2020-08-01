@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-#
-./old_file_remove.py
-
 # PDF をとってくる
 NEW_PDF_FILE=$(./fetch_tokyo_covid_report_pdf.py)
 if [[ -z "${NEW_PDF_FILE}" ]] ;then
