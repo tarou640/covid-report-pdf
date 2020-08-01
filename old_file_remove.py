@@ -7,9 +7,9 @@ from operator import itemgetter
 local_pdf_path = Path('pdf')
 filelists = []
 for file in os.listdir():
-    base, ext = os.path.splitext(local_pdf_path)
+    base, ext = os.path.splitext(file)
     if ext == '.zip':
-        filelists.append([file, os.path.getctime(local_pdf_path)])
+        filelists.append([file, os.path.getctime(file)])
 filelists.sort(key=itemgetter(1), reverse=True)
 MAX_CNT = 0
 for i,file in enumerate(filelists):
