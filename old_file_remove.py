@@ -4,7 +4,6 @@ from pathlib import Path
 from operator import itemgetter
 
 
-local_pdf_path = Path('pdf')
 filelists = []
 for file in os.listdir():
     base, ext = os.path.splitext(file)
