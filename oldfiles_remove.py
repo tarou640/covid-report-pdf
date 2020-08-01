@@ -18,6 +18,8 @@ from urllib.request import urlretrieve
 import requests
 from bs4 import BeautifulSoup
 
+logger = logging.getLogger(__name__)
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     # parser.add_argument('-i', '--int-data', type=int, default=0, help='')
@@ -30,6 +32,8 @@ def main():
     rm_files_cnt = 0
 
     local_path_pdf = Path("pdf")
+    logger.warning('対象パス：' + local_path_pdf)
+    
     filelists = []
     for file in os.listdir():
         base, ext = os.path.splitext(local_path_pdf)
