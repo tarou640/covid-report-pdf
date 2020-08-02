@@ -31,6 +31,8 @@ def main():
 
     MAX_CNT = 30
 
+    os.system('git rm ./csv/2020041701.csv')
+    
     # PDF削除
     rm_files_cnt = 0
     local_path_pdf = Path("./pdf")
