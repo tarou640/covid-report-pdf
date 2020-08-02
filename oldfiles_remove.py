@@ -18,6 +18,10 @@ from urllib.request import urlretrieve
 import requests
 from bs4 import BeautifulSoup
 
+from git import *
+import datetime, time
+
+
 logger = logging.getLogger(__name__)
 
 def main():
@@ -28,6 +32,13 @@ def main():
     # parser.add_argument('userid', type=int, help='')
     # parser.add_argument('filenames', nargs='+', help='')
     args = parser.parse_args()
+
+
+    repo = Repo('./')
+    for item in repo.iter_commits('master', max_count=10):
+        dt = datetime.datetime.fromtimestamp(item.authored_date).strftime("%Y-%m-%d %H:%M:%S")
+        #print("%s %s %s " % (item.hexsha, item.author, dt))
+        logger.warning('%s %s %s ' % (item.hexsha, item.author, dt)
 
     MAX_CNT = 30
 
@@ -47,7 +58,7 @@ def main():
             rm_files_cnt = rm_files_cnt + 1
             #print('{}を削除します'.format(file[0]))
             logger.warning('{}を削除します'.format(file[0]))
-            os.remove(str(local_path_pdf) + "/" + file[0])
+            #os.remove(str(local_path_pdf) + "/" + file[0])
     
     # 削除ファイル数をログ出力
     logger.warning('PDF削除ファイル数：' + str(rm_files_cnt))
@@ -68,7 +79,7 @@ def main():
             rm_files_cnt = rm_files_cnt + 1
             #print('{}を削除します'.format(file[0]))
             logger.warning('{}を削除します'.format(file[0]))
-            os.remove(str(local_path_csv) + "/" + file[0])
+            #os.remove(str(local_path_csv) + "/" + file[0])
     
     # 削除ファイル数をログ出力
     logger.warning('CSV削除ファイル数：' + str(rm_files_cnt))
