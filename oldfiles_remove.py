@@ -18,9 +18,6 @@ from urllib.request import urlretrieve
 import requests
 from bs4 import BeautifulSoup
 
-from git import *
-import datetime, time
-
 
 logger = logging.getLogger(__name__)
 
@@ -35,8 +32,6 @@ def main():
 
 
     logger.warning('## 不要ファイル削除処理 開始')
-    os.system('git rm ./csv/2020041701.csv')
-
 
     MAX_CNT = 30
 
