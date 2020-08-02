@@ -34,8 +34,9 @@ def main():
     args = parser.parse_args()
 
 
-    repo = Repo('./')
-
+    logger.warning('## 不要ファイル削除処理 開始')
+    repo = Repo('./csv')
+	repo.index.rm(['2020041701.csv'])
 
     MAX_CNT = 30
 
@@ -80,7 +81,7 @@ def main():
     
     # 削除ファイル数をログ出力
     logger.warning('CSV削除ファイル数：' + str(rm_files_cnt))
-
+    logger.warning('## 不要ファイル削除処理 終了')
 
 if __name__ == '__main__':
     main()
