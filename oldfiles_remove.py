@@ -47,7 +47,7 @@ def main():
             rm_files_cnt = rm_files_cnt + 1
             #print('{}を削除します'.format(file[0]))
             logger.warning('{}を削除します'.format(file[0]))
-            os.remove(str(local_path_pdf) + "/" + file[0])
+            #os.remove(str(local_path_pdf) + "/" + file[0])
     
     # 削除ファイル数をログ出力
     logger.warning('PDF削除ファイル数：' + str(rm_files_cnt))
@@ -68,7 +68,7 @@ def main():
             rm_files_cnt = rm_files_cnt + 1
             #print('{}を削除します'.format(file[0]))
             logger.warning('{}を削除します'.format(file[0]))
-            os.remove(str(local_path_csv) + "/" + file[0])
+            #os.remove(str(local_path_csv) + "/" + file[0])
     
     # 削除ファイル数をログ出力
     logger.warning('CSV削除ファイル数：' + str(rm_files_cnt))
