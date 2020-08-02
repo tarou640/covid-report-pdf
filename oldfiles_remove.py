@@ -42,7 +42,7 @@ def main():
         if ext == '.pdf':
             #filelists_pdf.append([file, os.path.getctime(str(local_path_pdf) + "/" + file)])
             filestr = str(base)
-            filelists_csv.append([file, filestr[0:10]])
+            filelists_pdf.append([file, filestr[0:10]])
     filelists_pdf.sort(key=itemgetter(1), reverse=True)
     for i,file in enumerate(filelists_pdf):
         if i > MAX_CNT - 1:
