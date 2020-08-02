@@ -63,7 +63,7 @@ def main():
         if ext == '.csv':
             #filelists_csv.append([file, os.path.getctime(str(local_path_csv) + "/" + file)])
             filestr = str(base)
-            filelists_csv.append([file, filestr[0:10])
+            filelists_csv.append([file, filestr[0:10]])
     filelists_csv.sort(key=itemgetter(1), reverse=True)
     for i,file in enumerate(filelists_csv):
         if i > MAX_CNT - 1:
