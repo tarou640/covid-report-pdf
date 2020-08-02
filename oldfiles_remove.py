@@ -35,8 +35,8 @@ def main():
 
 
     logger.warning('## 不要ファイル削除処理 開始')
-    repo = Repo('./csv')
-	repo.index.rm(['2020041701.csv'])
+    os.system('git rm ./csv/2020041701.csv')
+
 
     MAX_CNT = 30
 
