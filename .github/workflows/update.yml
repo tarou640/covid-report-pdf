@@ -30,8 +30,6 @@ jobs:
     # Runs a set of commands using the runners shell
     - name: Update 
       run: |
-        pip3 install -r requirements.txt
-        ./run.sh  || exit $(($? - 255))
         git config --global user.email "tarou_640@yahoo.co.jp"
         git config --global user.name "tarou640"
         git remote -v
@@ -39,6 +37,8 @@ jobs:
         git fetch origin
         git checkout master
         git rm --cached pdf/*.pdf csv/*.csv
+        pip3 install -r requirements.txt
+        ./run.sh  || exit $(($? - 255))
         git add pdf/*.pdf csv/*.csv
         git commit -m 'Update by GitHub Actions'
         git push origin master
