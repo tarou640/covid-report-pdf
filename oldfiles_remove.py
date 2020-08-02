@@ -35,10 +35,7 @@ def main():
 
 
     repo = Repo('./')
-    for item in repo.iter_commits('master', max_count=10):
-        dt = datetime.datetime.fromtimestamp(item.authored_date).strftime('%Y-%m-%d %H:%M:%S')
-        #print("%s %s %s " % (item.hexsha, item.author, dt))
-        logger.warning('%s %s %s ' % (item.hexsha, item.author, dt)
+
 
     MAX_CNT = 30
 
