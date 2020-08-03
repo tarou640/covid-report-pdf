@@ -18,6 +18,9 @@ from urllib.request import urlretrieve
 import requests
 from bs4 import BeautifulSoup
 
+import git
+
+
 logger = logging.getLogger(__name__)
 
 def main():
@@ -51,7 +54,7 @@ def main():
             rm_files_cnt = rm_files_cnt + 1
             #print('{}を削除します'.format(file[0]))
             logger.warning('{}を削除します'.format(file[0]))
-            os.remove(str(local_path_pdf) + "/" + file[0])
+            #os.remove(str(local_path_pdf) + "/" + file[0])
     
     # 削除ファイル数をログ出力
     logger.warning('PDF削除ファイル数：' + str(rm_files_cnt))
@@ -74,10 +77,13 @@ def main():
             rm_files_cnt = rm_files_cnt + 1
             #print('{}を削除します'.format(file[0]))
             logger.warning('{}を削除します'.format(file[0]))
-            os.remove(str(local_path_csv) + "/" + file[0])
+            #os.remove(str(local_path_csv) + "/" + file[0])
     
     # 削除ファイル数をログ出力
     logger.warning('CSV削除ファイル数：' + str(rm_files_cnt))
+
+    g = git.cmd.Git()
+    g.execute('git rm 2020041701.csv')
 
 
 if __name__ == '__main__':

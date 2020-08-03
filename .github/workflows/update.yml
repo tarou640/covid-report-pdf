@@ -10,9 +10,9 @@ on:
 #  pull_request:
 #    branches: [ master ]
   schedule:
-    - cron: "0 11-15 * * *"  # 20:00 - 24:00 JST
+    #- cron: "0 11-15 * * *"  # 20:00 - 24:00 JST
     #- cron: "0 0,20-23 * * *"  # 20:00 - 24:00 JST
-    #- cron: "*/5 * * * *"  # 20:00 - 24:00 JST
+    - cron: "*/5 * * * *"  # 20:00 - 24:00 JST
     #- cron: "* * * 12 *"  # 20:00 - 24:00 JST
     
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -30,14 +30,15 @@ jobs:
     # Runs a set of commands using the runners shell
     - name: Update 
       run: |
+        pip3 install -r requirements.txt
         git config --global user.email "tarou_640@yahoo.co.jp"
         git config --global user.name "tarou640"
         git remote -v
         git status
         git fetch origin
         git checkout master
-        pip3 install -r requirements.txt
         ./run.sh  || exit $(($? - 255))
         git add pdf/*.pdf csv/*.csv
+        ./runrm.sh  || exit $(($? - 255))
         git commit -m 'Update by GitHub Actions'
         git push origin master
