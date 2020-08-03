@@ -34,7 +34,8 @@ def main():
 
     MAX_CNT = 30
 
-    os.system('git rm ./csv/2020041701.csv')
+    g = git.cmd.Git()
+    g.execute('git rm {}'.format('./' + str(local_path_csv) + '/2020041701.csv'))
     
     # PDF削除
     rm_files_cnt = 0
@@ -81,9 +82,6 @@ def main():
     
     # 削除ファイル数をログ出力
     logger.warning('CSV削除ファイル数：' + str(rm_files_cnt))
-
-    g = git.cmd.Git()
-    g.execute('git rm {}'.format('./' + str(local_path_csv) + '/2020041701.csv'))
 
 
 if __name__ == '__main__':
