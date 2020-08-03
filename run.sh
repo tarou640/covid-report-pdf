@@ -5,7 +5,7 @@
 echo "不要ファイル削除（csv）"
 
 TARGET_DIR=./csv
-DELETE_DAY=`date +"%Y%m%d" -d '14 days ago'`
+DELETE_DAY=`"%Y%m%d" -d '14 days ago'`
 
 cd $TARGET_DIR
 FILE_LIST=`ls`
@@ -28,7 +28,7 @@ do
  fi
 done
 
-
+cd ./
 # PDF をとってくる
 NEW_PDF_FILE=$(./fetch_tokyo_covid_report_pdf.py)
 if [[ -z "${NEW_PDF_FILE}" ]] ;then
