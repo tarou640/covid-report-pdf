@@ -5,10 +5,10 @@
 echo "不要ファイル削除（csv）"
 
 #TARGET_DIR=./csv
-DELETE_DAY=`"%Y%m%d" -d '14 days ago'`
+DELETE_DAY=`date "%Y%m%d" -d '14 days ago'`
 
 #cd $TARGET_DIR
-FILE_LIST=`ls " ./csv"`
+FILE_LIST=`ls "csv"`
 
 for FILE in $FILE_LIST
 do
