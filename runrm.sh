@@ -34,7 +34,7 @@ echo "削除ファイル数（pdf）:"${DELETE_FILE_CNT}""
 # csvファイル
 echo "## 削除処理（csv）"
 
-TARGET_DIR=./csv
+TARGET_DIR=../csv
 cd $TARGET_DIR
 FILE_LIST=`ls "-r"`
 
