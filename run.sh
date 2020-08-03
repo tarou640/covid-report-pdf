@@ -5,7 +5,7 @@
 echo "不要ファイル削除（csv）"
 
 TARGET_DIR=./csv
-DELETE_DAY=`date "+%Y%m%d" --date '14 days ago'`
+DELETE_DAY=`date "+%Y%m%d" --date '30 days ago'`
 
 cd $TARGET_DIR
 FILE_LIST=`ls`
@@ -23,7 +23,8 @@ do
   if [ ${FILE_DATE} -lt ${DELETE_DAY} ]
   then
    #rm ${FILE}
-   echo "./csv"${FILE}"は削除します"
+   git rm ./csv/"${FILE}"
+   echo "./csv/"${FILE}"は削除します"
   fi
  fi
 done
