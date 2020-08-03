@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # 古いファイルを削除
-#./oldfiles_remove.py
+./oldfiles_remove.py
 
 # PDF をとってくる
 NEW_PDF_FILE=$(./fetch_tokyo_covid_report_pdf.py)
