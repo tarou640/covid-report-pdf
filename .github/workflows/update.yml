@@ -12,7 +12,8 @@ on:
   schedule:
     #- cron: "0 11-15 * * *"  # 20:00 - 24:00 JST
     #- cron: "0 0,20-23 * * *"  # 20:00 - 24:00 JST
-    - cron: "*/5 * * * *"  # 20:00 - 24:00 JST
+    #- cron: "*/5 * * * *"  # 20:00 - 24:00 JST
+    - cron: "*/35 * * * *"  # 20:00 - 24:00 JST
     #- cron: "* * * 12 *"  # 20:00 - 24:00 JST
     
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
