@@ -83,7 +83,7 @@ def main():
     logger.warning('CSV削除ファイル数：' + str(rm_files_cnt))
 
     g = git.cmd.Git()
-    g.execute('git rm {}'.format(str(local_path_csv) + "/2020041701.csv"))
+    g.execute('git rm {}'.format('.' + str(local_path_csv) + '/2020041701.csv'))
 
 
 if __name__ == '__main__':
