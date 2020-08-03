@@ -23,7 +23,7 @@ do
   if [ ${FILE_DATE} -lt ${DELETE_DAY} ]
   then
    #rm ${FILE}
-   git rm ./csv/"${FILE}"
+   #git rm ./csv/"${FILE}"
    echo "./csv/"${FILE}"は削除します"
   fi
  fi
