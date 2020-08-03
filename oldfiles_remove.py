@@ -33,9 +33,6 @@ def main():
     args = parser.parse_args()
 
     MAX_CNT = 30
-
-    g = git.cmd.Git()
-    g.execute('git rm {}'.format('./' + str(local_path_csv) + '/2020041701.csv'))
     
     # PDF削除
     rm_files_cnt = 0
@@ -64,6 +61,9 @@ def main():
     rm_files_cnt = 0
     local_path_csv = Path("./csv")
     logger.warning('対象パス：' + str(local_path_csv))
+    
+    g = git.cmd.Git()
+    g.execute('git rm {}'.format('./' + str(local_path_csv) + '/2020041701.csv'))
     
     filelists_csv = []
     for file in os.listdir(local_path_csv):
