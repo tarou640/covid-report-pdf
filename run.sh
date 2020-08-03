@@ -4,7 +4,7 @@
 #./oldfiles_remove.py
 echo "不要ファイル削除（csv）"
 
-TARGET_DIR=/csv
+TARGET_DIR=./csv
 DELETE_DAY=`date +"%Y%m%d" -d '14 days ago'`
 
 cd $TARGET_DIR
