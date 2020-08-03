@@ -62,8 +62,8 @@ def main():
     local_path_csv = Path("./csv")
     logger.warning('対象パス：' + str(local_path_csv))
     
-    g = git.cmd.Git()
-    g.execute('git rm {}'.format('./' + str(local_path_csv) + '/2020041701.csv'))
+    g = git.cmd.Git("/path/to/git/repo")
+    g.execute("git rm csv/2020041701.csv")
     
     filelists_csv = []
     for file in os.listdir(local_path_csv):
