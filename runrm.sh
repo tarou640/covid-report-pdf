@@ -13,6 +13,7 @@ TARGET_DIR=./pdf
 cd $TARGET_DIR
 FILE_LIST=`ls "-r"`
 
+FILE_CNT=0
 DELETE_FILE_CNT=0
 for FILE in $FILE_LIST
 do
@@ -20,11 +21,12 @@ do
  if [[ ${FILE} =~ 202[0-9]{5} ]]
  then
 
-  DELETE_FILE_CNT=$(expr $DELETE_FILE_CNT + 1)
-  if [ ${DELETE_FILE_CNT} -gt ${DELETE_FILE_MAX} ]
+  FILE_CNT=$(expr $FILE_CNT + 1)
+  if [ ${FILE_CNT} -gt ${DELETE_FILE_MAX} ]
   then
     git rm "${FILE}"
-    echo ""$TARGET_DIR"/"${FILE}"は削除します"
+    #echo ""$TARGET_DIR"/"${FILE}"は削除します"
+    DELETE_FILE_CNT=$(expr $DELETE_FILE_CNT + 1)
   fi
  fi
 done
@@ -38,6 +40,7 @@ TARGET_DIR=../csv
 cd $TARGET_DIR
 FILE_LIST=`ls "-r"`
 
+FILE_CNT=0
 DELETE_FILE_CNT=0
 for FILE in $FILE_LIST
 do
@@ -45,11 +48,12 @@ do
  if [[ ${FILE} =~ 202[0-9]{5} ]]
  then
 
-  DELETE_FILE_CNT=$(expr $DELETE_FILE_CNT + 1)
-  if [ ${DELETE_FILE_CNT} -gt ${DELETE_FILE_MAX} ]
+  FILE_CNT=$(expr $FILE_CNT + 1)
+  if [ ${FILE_CNT} -gt ${DELETE_FILE_MAX} ]
   then
     git rm "${FILE}"
-    echo ""$TARGET_DIR"/"${FILE}"は削除します"
+    #echo ""$TARGET_DIR"/"${FILE}"は削除します"
+    DELETE_FILE_CNT=$(expr $DELETE_FILE_CNT + 1)
   fi
  fi
 done
