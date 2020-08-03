@@ -4,11 +4,11 @@
 #./oldfiles_remove.py
 echo "不要ファイル削除（csv）"
 
-#TARGET_DIR=./csv
+TARGET_DIR=./csv
 DELETE_DAY=`date "+%Y%m%d" --date '14 days ago'`
 
-#cd $TARGET_DIR
-FILE_LIST=`ls './csv'`
+cd $TARGET_DIR
+FILE_LIST=`ls`
 
 for FILE in $FILE_LIST
 do
@@ -27,6 +27,9 @@ do
   fi
  fi
 done
+
+TARGET_DIR=../
+cd $TARGET_DIR
 
 # PDF をとってくる
 NEW_PDF_FILE=$(./fetch_tokyo_covid_report_pdf.py)
