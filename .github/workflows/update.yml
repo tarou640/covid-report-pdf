@@ -41,6 +41,6 @@ jobs:
         git checkout master
         ./run.sh  || exit $(($? - 255))
         git add pdf/*.pdf csv/*.csv
-        ./runrmm.sh
+        ./runrm.sh
         git commit -m 'Update by GitHub Actions'
         git push origin master
