@@ -10,9 +10,10 @@ on:
 #  pull_request:
 #    branches: [ master ]
   schedule:
+    - cron: "50 10-14 * * *"  # 19:50 - 23:50 JST
     #- cron: "0 11-15 * * *"  # 20:00 - 24:00 JST
     #- cron: "0 0,20-23 * * *"  # 20:00 - 24:00 JST
-    - cron: "*/5 * * * *"  # 20:00 - 24:00 JST
+    #- cron: "*/5 * * * *"  # 20:00 - 24:00 JST
     #- cron: "*/35 * * * *"  # 20:00 - 24:00 JST
     #- cron: "* * * 12 *"  # 20:00 - 24:00 JST
     
@@ -40,5 +41,6 @@ jobs:
         git checkout master
         ./run.sh  || exit $(($? - 255))
         git add pdf/*.pdf csv/*.csv
+        ./runrmm.sh
         git commit -m 'Update by GitHub Actions'
         git push origin master
