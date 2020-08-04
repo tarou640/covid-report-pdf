@@ -48,6 +48,13 @@ def main():
         #lines[table_text.y1].extend(t_list)
         lines[table_text.y1].extend([i for i in t_list if '(' not in i and len(i) < 7])
 
+
+    # debug
+    for i, item in enumerate(lines):
+        logger.warning('lines' + str(i) + ":" + item)
+
+
+
     # 各行で対応する要素を出力
     for k1, k2 in pairs(lines):
         for place, count in zip(lines[k1], lines[k2]):
