@@ -51,7 +51,7 @@ def main():
 
     # debug
     for i, item in enumerate(lines):
-        logger.warning('lines' + str(i) + ":" + item)
+        logger.warning("lines" + str(i) + ":" + str(item))
 
 
 
