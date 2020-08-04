@@ -46,7 +46,7 @@ def main():
         t_list = table_text.get_text().strip().split()  # たまに一つの LTTextLine に複数テキストがあるので split
         #t_list = table_text.get_text().split()
         #lines[table_text.y1].extend(t_list)
-        if str(t_list) > 0:
+        if len(str(t_list)) > 0:
             lines[table_text.y1].extend([i for i in t_list if '(' not in i])
             logger.warning("lines:" + str([i for i in t_list if '(' not in i]))
 
