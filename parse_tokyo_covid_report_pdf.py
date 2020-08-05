@@ -50,8 +50,8 @@ def main():
             #lines[table_text.y1].extend([i for i in t_list if '(' not in i and not len(i) and len(i) < 7])
             #logger.warning("lines:" + str([i for i in t_list if '(' not in i and not len(i) and len(i) < 7]))
 
-            if len([i for i in t_list if '(' not in i and not len(i) and len(i) < 7]) > 0:
-                lines[table_text.y1].extend([i for i in t_list if '(' not in i and not len(i) and len(i) < 7])
+            if len([i for i in t_list if '(' not in i and len(i) < 7]) > 0:
+                lines[table_text.y1].extend([i for i in t_list if '(' not in i and len(i) < 7])
 
     # 各行で対応する要素を出力
     for k1, k2 in pairs(lines):
