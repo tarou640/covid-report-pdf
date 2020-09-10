@@ -28,6 +28,15 @@ REPORT_PARENTPAGE_KEYWORD = "最新の本部報"
 REPORT_PAGE_KEYWORD = "新型コロナウイルスに関連した患者の発生について"
 APPENDIX_SELECTOR = "li.pdf > a"
 
+def find_parentlatest_report_page(base_url: str):
+    r = requests.get(base_url)
+    soup = BeautifulSoup(r.content, "html.parser")
+
+    for a in soup.find_all("a"):
+        if REPORT_PARENTPAGE_KEYWORD in str(a.string):
+            return urljoin(base_url, a.get("href"))
+    return ""
+
 def find_latest_report_page(base_url: str):
     r = requests.get(base_url)
     soup = BeautifulSoup(r.content, "html.parser")
@@ -36,7 +45,6 @@ def find_latest_report_page(base_url: str):
         if REPORT_PAGE_KEYWORD in str(a.string):
             return urljoin(base_url, a.get("href"))
     return ""
-
 
 def find_latest_report_pdf(report_page_url: str):
     r = requests.get(report_page_url)
@@ -74,7 +82,7 @@ def main():
 #    # print(latest_report_page_url)
 
     #　「最新の本部報」リンクを探す
-    latest_parentreport_page_url = find_latest_report_page(BASE_URL)
+    latest_parentreport_page_url = find_parentlatest_report_page(BASE_URL)
     if not latest_parentreport_page_url:
         sys.exit(1)  # まったくないことはないはず
     # print(latest_report_page_url)
