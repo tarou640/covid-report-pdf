@@ -20,12 +20,13 @@ from bs4 import BeautifulSoup
 """
 BASE_URL = "https://www.bousai.metro.tokyo.lg.jp/taisaku/saigai/1007261/"
 BASE_URL = "https://www.bousai.metro.tokyo.lg.jp/taisaku/saigai/1010035/"
-"""
 BASE_URL = "https://www.bousai.metro.tokyo.lg.jp/taisaku/saigai/1010035/1011628/"
+"""
+BASE_URL = "https://www.bousai.metro.tokyo.lg.jp/taisaku/saigai/1010035/"
 
+REPORT_PARENTPAGE_KEYWORD = "最新の本部報"
 REPORT_PAGE_KEYWORD = "新型コロナウイルスに関連した患者の発生について"
 APPENDIX_SELECTOR = "li.pdf > a"
-
 
 def find_latest_report_page(base_url: str):
     r = requests.get(base_url)
@@ -67,11 +68,23 @@ def main():
     # parser.add_argument('filenames', nargs='+', help='')
     args = parser.parse_args()
 
-    latest_report_page_url = find_latest_report_page(BASE_URL)
-    if not latest_report_page_url:
+#    latest_report_page_url = find_latest_report_page(BASE_URL)
+#    if not latest_report_page_url:
+#        sys.exit(1)  # まったくないことはないはず
+#    # print(latest_report_page_url)
+
+    #　「最新の本部報」リンクを探す
+    latest_parentreport_page_url = find_latest_report_page(BASE_URL)
+    if not latest_parentreport_page_url:
         sys.exit(1)  # まったくないことはないはず
     # print(latest_report_page_url)
 
+    # 「新型コロナウイルスに関連した患者の発生について」リンクを探す
+    latest_report_page_url = find_latest_report_page(latest_parentreport_page_url)
+    if not latest_report_page_url:
+        sys.exit(1)  # まったくないことはないはず
+    # print(latest_report_page_url)
+        
     latest_report_pdf_url = find_latest_report_pdf(latest_report_page_url)
     if not latest_report_pdf_url:
         sys.exit(1)  # まったくないことはないはず
