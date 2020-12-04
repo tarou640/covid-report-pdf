@@ -31,4 +31,4 @@ fi
 
 # latest.csv のコピーを生成
 cp "${NEW_CSV_FILE}" csv/latest.csv
-cp "${NEW_CSF_FILE}" csv/latest.csf
+cp "${NEW_CSF_FILE}" csf/latest.csf
