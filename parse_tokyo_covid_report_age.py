@@ -37,6 +37,8 @@ def main():
                   key=lambda b: b.y1)
     logger.warning(start_box.y1)
     logger.warning(end_box.y1)
+    logger.warning("年齢別感染者情報取得:" + args.filename)
+    
     # PDF は左下原点のため、START のほうが Y が大きい。
     tabel_texts = filter(lambda b: end_box.y1 < b.y1 <= start_box.y1, first_page_texts)
 
