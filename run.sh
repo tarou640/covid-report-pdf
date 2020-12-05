@@ -35,7 +35,7 @@ NEW_CSS_FILE=${NEW_PDF_FILE//pdf/css}
 ./parse_tokyo_covid_report_serious.py ${NEW_PDF_FILE} > ${NEW_CSS_FILE}
 
 # もしファイル名の末尾に数字がついていたら、日付のみの csf も作る
-DAY_CSF_FILE=${NEW_CSS_FILE:0:12}.css
+DAY_CSS_FILE=${NEW_CSS_FILE:0:12}.css
 if [[ ${NEW_CSS_FILE} != ${DAY_CSS_FILE} ]]; then
   cp "${NEW_CSS_FILE}" "${DAY_CSS_FILE}"
 fi
@@ -43,4 +43,4 @@ fi
 # latest.csv のコピーを生成
 cp "${NEW_CSV_FILE}" csv/latest.csv
 cp "${NEW_CSF_FILE}" csf/latest.csf
-cp "${NEW_CSF_FILE}" css/latest.css
+cp "${NEW_CSS_FILE}" css/latest.css
