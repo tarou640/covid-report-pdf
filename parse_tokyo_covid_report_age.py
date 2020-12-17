@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 
 TABLE_START_TEXT = "10歳未満"
 # TABLE_END_TEXT = "性別"
-TABLE_END_TEXT = "【参考】 入院・療養等調整中の陽性患者について"
+TABLE_END_TEXT = "今後の調査の状況"
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
