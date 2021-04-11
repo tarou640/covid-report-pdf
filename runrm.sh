@@ -61,9 +61,9 @@ echo "削除ファイル数（csv）:"${DELETE_FILE_CNT}""
 
 
 # cssファイル
-echo "## 削除処理（css）"
+echo "## 削除処理（csf）"
 
-TARGET_DIR=../css
+TARGET_DIR=../csf
 cd $TARGET_DIR
 FILE_LIST=`ls "-r"`
 
@@ -84,7 +84,7 @@ do
   fi
  fi
 done
-echo "削除ファイル数（css）:"${DELETE_FILE_CNT}""
+echo "削除ファイル数（csf）:"${DELETE_FILE_CNT}""
 
 
 echo "## 不要ファイル削除処理 終了"
