@@ -58,6 +58,10 @@ def main():
 #                mlist.clear()
 
         t_list = table_text.get_text().strip().split()  # たまに一つの LTTextLine に複数テキストがあるので split
+
+logger.warning(table_text.get_text())
+logger.warning(t_list)
+
         lines[table_text.y1].extend(t_list)
 
     # 各行で対応する要素を出力
