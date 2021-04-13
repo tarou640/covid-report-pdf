@@ -7,10 +7,10 @@
 
 import sys
 
-from pdfminer.converter import PDFPageAggregator
-from pdfminer.layout import LAParams, LTContainer, LTTextBox, LTTextLine
-from pdfminer.pdfinterp import PDFPageInterpreter, PDFResourceManager
-from pdfminer.pdfpage import PDFPage
+from pdfminer3.converter import PDFPageAggregator
+from pdfminer3.layout import LAParams, LTContainer, LTTextBox, LTTextLine
+from pdfminer3.pdfinterp import PDFPageInterpreter, PDFResourceManager
+from pdfminer3.pdfpage import PDFPage
 
 
 def find_textboxes_recursively(layout_obj):
