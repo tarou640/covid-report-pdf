@@ -3,7 +3,7 @@
 # 古いファイルを削除
 echo "## 不要ファイル削除処理 開始"
 
-DELETE_FILE_MAX=30
+DELETE_FILE_MAX=50
 
 
 # pdfファイル
