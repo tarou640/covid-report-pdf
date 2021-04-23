@@ -19,7 +19,8 @@ from pdfminer.pdfpage import PDFPage
 logger = logging.getLogger(__name__)
 
 TABLE_START_TEXT = "千代田"
-TABLE_END_TEXT = "今後の調査の状況"
+# TABLE_END_TEXT = "今後の調査の状況"  -- remove 2021.04.23
+TABLE_END_TEXT = "既に退院"
 
 
 def main():
