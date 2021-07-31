@@ -69,7 +69,7 @@ def main():
     # 各行で対応する要素を出力
     for k1, k2 in pairs(lines):
         for place, count in zip(lines[k1], lines[k2]):
-            print(f"{place},{count}")
+            print(f"{place.replace(',', '')},{count.replace(',', '')}")
 
 
 def pairs(iterable, c=2):
