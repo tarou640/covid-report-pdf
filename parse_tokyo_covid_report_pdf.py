@@ -49,7 +49,7 @@ def main():
         #lines[table_text.y1].extend(t_list)
         if len(str(t_list)) > 0:
             #lines[table_text.y1].extend([i for i in t_list if '(' not in i and not len(i) and len(i) < 7])
-            logger.warning("lines:" + str([i for i in t_list if '(' not in i and not len(i) and len(i) < 7]))
+            #logger.warning("lines:" + str([i for i in t_list if '(' not in i and not len(i) and len(i) < 7]))
 
 #            mlist=[i for i in t_list if '(' not in i and len(i) < 7]
             mlist=[i for i in t_list if '(' not in i]

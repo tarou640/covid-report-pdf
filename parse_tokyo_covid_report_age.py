@@ -75,8 +75,10 @@ def main():
             # 終了判定が空ぶった時用に、データ個数（12）で切って出力を強制的に終了させる
             output_count += 1
             if output_count > 12:
-                break;
+                goto .end
             print(f"{place},{count.replace(',', '')}")
+
+label .end
 
 
 def pairs(iterable, c=2):
