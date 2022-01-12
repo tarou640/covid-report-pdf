@@ -45,7 +45,7 @@ def main():
     tabel_texts = filter(lambda b: end_box.y1 < b.y1 <= start_box.y1, first_page_texts)
 
 	# 出力終了判定用
-	output_count = 0;
+	output_count = 0
 
     # 読み取った LTTextLine を 行ごとに区分け
     lines = defaultdict(list)
@@ -76,7 +76,8 @@ def main():
             # 終了判定が空ぶった時用に、データ個数（12）で切って出力を強制的に終了させる
             if output_count > 12:
                 goto .end
-            print(f"{place},{count.replace(',', '')}")
+            else:
+                print(f"{place},{count.replace(',', '')}")
 
 label .end
 
