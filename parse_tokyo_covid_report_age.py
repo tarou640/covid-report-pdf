@@ -71,13 +71,10 @@ def main():
 
     # 各行で対応する要素を出力
     for k1, k2 in pairs(lines):
-        output_count = output_count + 1
         for place, count in zip(lines[k1], lines[k2]):
-            # 終了判定が空ぶった時用に、データ個数（12）で切って出力を強制的に終了させる
-            if output_count > 12:
-                goto .end
-            else:
-                print(f"{place},{count.replace(',', '')}")
+            output_count += 1
+            logger.warning("output_count:" + str(output_count))
+            print(f"{place},{count.replace(',', '')}")
 
 label .end
 
