@@ -44,9 +44,6 @@ def main():
     # PDF は左下原点のため、START のほうが Y が大きい。
     tabel_texts = filter(lambda b: end_box.y1 < b.y1 <= start_box.y1, first_page_texts)
 
-	# 出力終了判定用
-	output_count = 0
-
     # 読み取った LTTextLine を 行ごとに区分け
     lines = defaultdict(list)
     for table_text in tabel_texts:
@@ -72,8 +69,6 @@ def main():
     # 各行で対応する要素を出力
     for k1, k2 in pairs(lines):
         for place, count in zip(lines[k1], lines[k2]):
-            output_count += 1
-            logger.warning("output_count:" + str(output_count))
             print(f"{place},{count.replace(',', '')}")
 
 label .end
