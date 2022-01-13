@@ -71,8 +71,6 @@ def main():
         for place, count in zip(lines[k1], lines[k2]):
             print(f"{place},{count.replace(',', '')}")
 
-label .end
-
 
 def pairs(iterable, c=2):
     """
