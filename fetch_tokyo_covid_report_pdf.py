@@ -23,7 +23,7 @@ BASE_URL = "https://www.bousai.metro.tokyo.lg.jp/taisaku/saigai/1010035/"
 BASE_URL = "https://www.bousai.metro.tokyo.lg.jp/taisaku/saigai/1010035/1011628/"
 BASE_URL = "https://www.bousai.metro.tokyo.lg.jp/taisaku/saigai/1010035/"
 """
-BASE_URL = "https://www.bousai.metro.tokyo.lg.jp/taisaku/saigai/1010035/1021648/"
+BASE_URL = "https://www.bousai.metro.tokyo.lg.jp/taisaku/saigai/1010035/"
 
 REPORT_PARENTPAGE_KEYWORD = "最新の本部報"
 REPORT_PAGE_KEYWORD = "新型コロナウイルスに関連した患者の発生について"
