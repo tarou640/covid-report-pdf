@@ -24,6 +24,7 @@ BASE_URL = "https://www.bousai.metro.tokyo.lg.jp/taisaku/saigai/1010035/1011628/
 BASE_URL = "https://www.bousai.metro.tokyo.lg.jp/taisaku/saigai/1010035/"
 """
 BASE_URL = "https://www.bousai.metro.tokyo.lg.jp/taisaku/saigai/1010035/"
+BASE_URL_LEFT = "https://www.fukushihoken.metro.tokyo.lg.jp/hodo/saishin/"
 
 REPORT_PARENTPAGE_KEYWORD = "最新の本部報"
 REPORT_PAGE_KEYWORD = "新型コロナウイルスに関連した患者の発生について"
@@ -99,7 +100,7 @@ def main():
         sys.exit(1)  # まったくないことはないはず
     # print(latest_report_pdf_url)
 
-    local_pdf_path = fetch_pdf(latest_report_pdf_url)
+    local_pdf_path = fetch_pdf(BASE_URL_LEFT + latest_report_pdf_url)
 
     # ダウンロードした場合、ダウンロードしたファイル名を stdout に出す
     print(local_pdf_path)
