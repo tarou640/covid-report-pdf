@@ -30,7 +30,7 @@ BASE_URL_LEFT = "https://www.fukushihoken.metro.tokyo.lg.jp/hodo/saishin/"
 REPORT_PARENTPAGE_KEYWORD = "最新の本部報"
 REPORT_PAGE_KEYWORD = "新型コロナウイルスに関連した患者の発生について"
 
-APPENDIX_SELECTOR = "div.pdf > a"
+APPENDIX_SELECTOR = ".resourceLink newWindow > a"
 
 
 def find_parentlatest_report_page(base_url: str):
