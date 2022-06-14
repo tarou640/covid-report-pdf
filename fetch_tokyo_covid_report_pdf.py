@@ -18,6 +18,8 @@ import logging
 import requests
 from bs4 import BeautifulSoup
 
+logger = logging.getLogger(__name__)
+
 """
 BASE_URL = "https://www.bousai.metro.tokyo.lg.jp/taisaku/saigai/1007261/"
 BASE_URL = "https://www.bousai.metro.tokyo.lg.jp/taisaku/saigai/1010035/"
