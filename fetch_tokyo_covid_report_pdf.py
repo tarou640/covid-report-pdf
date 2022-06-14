@@ -86,28 +86,33 @@ def main():
 #        sys.exit(1)  # まったくないことはないはず
 #    # print(latest_report_page_url)
 
+    logger.warning("＝　処理スタート　＝")
     #　「最新の本部報」リンクを探す
     latest_parentreport_page_url = find_parentlatest_report_page(BASE_URL)
     if not latest_parentreport_page_url:
         sys.exit(1)  # まったくないことはないはず
     # print(latest_report_page_url)
-
+    logger.warning("「最新の本部報」リンクを探す")
+    
     # 「新型コロナウイルスに関連した患者の発生について」リンクを探す
     latest_report_page_url = find_latest_report_page(latest_parentreport_page_url)
     if not latest_report_page_url:
         sys.exit(1)  # まったくないことはないはず
     # print(latest_report_page_url)
-        
+    logger.warning("「新型コロナウイルスに関連した患者の発生について」リンクを探す: " + latest_report_page_url)
+    
     latest_report_pdf_url = find_latest_report_pdf(latest_report_page_url)
     if not latest_report_pdf_url:
         sys.exit(1)  # まったくないことはないはず
     # print(latest_report_pdf_url)
-
+    logger.warning("PDFリンクを探す: " + latest_report_pdf_url)
+    
     local_pdf_path = fetch_pdf(BASE_URL_LEFT + latest_report_pdf_url)
-
+    logger.warning("PDFダウンロード: " + local_pdf_path)
+    
     # ダウンロードした場合、ダウンロードしたファイル名を stdout に出す
     print(local_pdf_path)
-
+    logger.warning("＝　処理終了　＝")
 
 if __name__ == '__main__':
     main()
