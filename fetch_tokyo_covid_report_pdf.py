@@ -13,6 +13,7 @@ from pathlib import Path
 import sys
 from urllib.parse import urljoin, urlsplit
 from urllib.request import urlretrieve
+import logging
 
 import requests
 from bs4 import BeautifulSoup
