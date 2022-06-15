@@ -96,10 +96,10 @@ def main():
     if not latest_parentreport_page_url:
         sys.exit(1)  # まったくないことはないはず
     # print(latest_report_page_url)
-    logger.warning("「最新の本部報」リンクを探す: " + latest_report_page_url)
+    logger.warning("「最新の本部報」リンクを探す: " + latest_parentreport_page_url)
     # 補正
-    latest_report_page_url = latest_report_page_url.replace('../../../', BASE_URL_LEFT)
-    logger.warning("補正後: " + latest_report_page_url)
+    latest_parentreport_page_url = latest_parentreport_page_url.replace('../../../', BASE_URL_LEFT)
+    logger.warning("補正後: " + latest_parentreport_page_url)
     
     # 「新型コロナウイルスに関連した患者の発生について」リンクを探す
     latest_report_page_url = find_latest_report_page(latest_parentreport_page_url)
