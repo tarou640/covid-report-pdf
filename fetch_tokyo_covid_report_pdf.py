@@ -50,9 +50,12 @@ def find_latest_report_page(base_url: str):
     r = requests.get(base_url)
     soup = BeautifulSoup(r.content, "html.parser")
 
+    # for a in soup.find_all("a"):
+    #     if REPORT_PAGE_KEYWORD in str(a.string):
+    #         return urljoin(base_url, a.get("href"))
     for a in soup.find_all("a"):
         if REPORT_PAGE_KEYWORD in str(a.string):
-            return urljoin(base_url, a.get("href"))
+            return a.get("href")
     return ""
 
 def find_latest_report_pdf(report_page_url: str):
