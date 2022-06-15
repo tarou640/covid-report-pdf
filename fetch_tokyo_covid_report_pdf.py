@@ -28,7 +28,8 @@ BASE_URL = "https://www.bousai.metro.tokyo.lg.jp/taisaku/saigai/1010035/"
 APPENDIX_SELECTOR = "li.pdf > a"
 """
 BASE_URL = "https://www.bousai.metro.tokyo.lg.jp/taisaku/saigai/1010035/"
-BASE_URL_LEFT = "https://www.fukushihoken.metro.tokyo.lg.jp/hodo/saishin/"
+BASE_URL_LEFT = "https://www.bousai.metro.tokyo.lg.jp/"
+BASE_URL_PDF_LEFT = "https://www.fukushihoken.metro.tokyo.lg.jp/hodo/saishin/"
 
 REPORT_PARENTPAGE_KEYWORD = "最新の本部報"
 REPORT_PAGE_KEYWORD = "新型コロナウイルスに関連した患者の発生について"
@@ -96,6 +97,9 @@ def main():
         sys.exit(1)  # まったくないことはないはず
     # print(latest_report_page_url)
     logger.warning("「最新の本部報」リンクを探す: " + latest_report_page_url)
+    # 補正
+    latest_report_page_url = latest_report_page_url.replace('../../../', BASE_URL_LEFT)
+    logger.warning("補正後: " + latest_report_page_url)
     
     # 「新型コロナウイルスに関連した患者の発生について」リンクを探す
     latest_report_page_url = find_latest_report_page(latest_parentreport_page_url)
@@ -110,7 +114,7 @@ def main():
     # print(latest_report_pdf_url)
     logger.warning("PDFリンクを探す: " + latest_report_pdf_url)
     
-    local_pdf_path = fetch_pdf(BASE_URL_LEFT + latest_report_pdf_url)
+    local_pdf_path = fetch_pdf(BASE_URL_PDF_LEFT + latest_report_pdf_url)
     logger.warning("PDFダウンロード: " + local_pdf_path)
     
     # ダウンロードした場合、ダウンロードしたファイル名を stdout に出す
