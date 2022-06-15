@@ -47,6 +47,7 @@ def find_parentlatest_report_page(base_url: str):
     return ""
 
 def find_latest_report_page(base_url: str):
+    logger.warning("find_latest_report_page(base_url): " + base_url)
     r = requests.get(base_url)
     soup = BeautifulSoup(r.content, "html.parser")
 
