@@ -18,6 +18,7 @@ import logging
 import requests
 from bs4 import BeautifulSoup
 
+# logging.basicConfig(filename="./app.log",level=logging.WARNING)
 logger = logging.getLogger(__name__)
 
 """
@@ -34,7 +35,8 @@ BASE_URL_PDF_LEFT = "https://www.fukushihoken.metro.tokyo.lg.jp/hodo/saishin/"
 REPORT_PARENTPAGE_KEYWORD = "最新の本部報"
 REPORT_PAGE_KEYWORD = "新型コロナウイルスに関連した患者の発生について"
 
-APPENDIX_SELECTOR = ".resourceLink newWindow > a"
+APPENDIX_SELECTOR = "li.pdf > a"
+APPENDIX_SELECTOR_KEYWORD = 'class="resourceLink newWindow"'
 
 
 def find_parentlatest_report_page(base_url: str):
@@ -47,25 +49,42 @@ def find_parentlatest_report_page(base_url: str):
     return ""
 
 def find_latest_report_page(base_url: str):
-    logger.warning("find_latest_report_page(base_url): " + base_url)
+    #logger.warning("find_latest_report_page(base_url): " + base_url)
+    # r = requests.get(base_url)
+    # soup = BeautifulSoup(r.content, "html.parser")
+    #
+    # for a in soup.find_all(True):
+    #      logger.warning(str(a.string))
+    #     if REPORT_PAGE_KEYWORD in str(a.string):
+    #          return urljoin(base_url, a.get("href"))
+
     r = requests.get(base_url)
     soup = BeautifulSoup(r.content, "html.parser")
 
-    # for a in soup.find_all("a"):
-    #     if REPORT_PAGE_KEYWORD in str(a.string):
-    #         return urljoin(base_url, a.get("href"))
-    for a in soup.find_all("a"):
-        if REPORT_PAGE_KEYWORD in str(a.string):
-            return a.get("href")
+    prev = ""
+    for a in soup.prettify().splitlines():
+        if REPORT_PAGE_KEYWORD in a:
+            prev = prev.replace('          <a href="', '')
+            prev = prev.replace('" target="_blank">', '')
+            return urljoin(base_url, prev)
+        prev = a
+
     return ""
 
 def find_latest_report_pdf(report_page_url: str):
     r = requests.get(report_page_url)
     soup = BeautifulSoup(r.content, "html.parser")
 
-    a = soup.select_one(APPENDIX_SELECTOR)
-    return urljoin(report_page_url, a.get("href"))
+    # a = soup.select_one(APPENDIX_SELECTOR)
+    # return urljoin(report_page_url, a.get("href"))
 
+    for a in soup.prettify().splitlines():
+        if APPENDIX_SELECTOR_KEYWORD in a:
+            a = a.replace('         <a class="resourceLink newWindow" href="', '')
+            a = a.replace('" target="_blank">', '')
+            return urljoin(report_page_url, a)
+            # logger.warning(a)
+        prev = a
 
 def fetch_pdf(report_pdf_url: str):
     url_path = urlsplit(report_pdf_url).path
