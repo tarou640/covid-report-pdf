@@ -18,6 +18,8 @@ import logging
 import requests
 from bs4 import BeautifulSoup
 
+import datetime
+
 # logging.basicConfig(filename="./app.log",level=logging.WARNING)
 logger = logging.getLogger(__name__)
 
@@ -90,7 +92,14 @@ def find_latest_report_pdf(report_page_url: str):
 
 def fetch_pdf(report_pdf_url: str):
     url_path = urlsplit(report_pdf_url).path
-    filename = Path(url_path).name
+    #filename = Path(url_path).name
+    
+    t_delta = datetime.timedelta(hours=9)
+    JST = datetime.timezone(t_delta, 'JST')
+    now = datetime.datetime.now(JST)
+    d = now.strftime('%Y%m%d')
+    filename = str(d) + ".pdf" 
+    
     local_path = Path("pdf") / filename
     # ダウンロード済みかをチェック、すでにファイルがあれば何もしない
     if local_path.exists():
