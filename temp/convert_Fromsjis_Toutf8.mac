@@ -1,0 +1,5 @@
+//キーボードマクロのファイル
+S_SelectAll(0); // すべて選択
+SJIStoUTF8(0);  // SJIS→UTF-8コード変換
+FileSave( ); // 上書き保存
+WinClose( ); // 閉じる
