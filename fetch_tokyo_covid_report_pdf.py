@@ -30,7 +30,6 @@ APPENDIX_SELECTOR = "li.pdf > a"
 """
 BASE_URL = "https://www.bousai.metro.tokyo.lg.jp/taisaku/saigai/1010035/"
 BASE_URL_LEFT = "https://www.bousai.metro.tokyo.lg.jp/"
-BASE_URL_PDF_LEFT = "https://www.fukushihoken.metro.tokyo.lg.jp/hodo/saishin/"
 
 REPORT_PARENTPAGE_KEYWORD = "最新の本部報"
 REPORT_PAGE_KEYWORD = "新型コロナウイルスに関連した患者の発生について"
@@ -80,10 +79,13 @@ def find_latest_report_pdf(report_page_url: str):
 
     for a in soup.prettify().splitlines():
         if APPENDIX_SELECTOR_KEYWORD in a:
-            a = a.replace('         <a class="resourceLink newWindow" href="', '')
-            a = a.replace('" target="_blank">', '')
-            return urljoin(report_page_url, a)
             # logger.warning(a)
+            p1 = a.find('href="')
+            a = a[(p1 + 6):(len(a) - 9)]
+            p2 = a.find('"')
+            a = a[0:p2]
+            # logger.warning(a)
+            return urljoin(report_page_url, a)
         prev = a
 
 def fetch_pdf(report_pdf_url: str):
@@ -134,7 +136,7 @@ def main():
     # print(latest_report_pdf_url)
     logger.warning("PDFリンクを探す: " + latest_report_pdf_url)
     
-    local_pdf_path = fetch_pdf(BASE_URL_PDF_LEFT + latest_report_pdf_url)
+    local_pdf_path = fetch_pdf(latest_report_pdf_url)
     logger.warning("PDFダウンロード: " + local_pdf_path)
     
     # ダウンロードした場合、ダウンロードしたファイル名を stdout に出す
