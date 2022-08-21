@@ -20,7 +20,8 @@ logger = logging.getLogger(__name__)
 
 TABLE_START_TEXT = "10歳未満"
 #TABLE_END_TEXT = "性別"
-TABLE_END_TEXT = "都内発生数"
+TABLE_END_TEXT = "【参考】検査件数"
+#TABLE_END_TEXT = "都内発生数"
 #TABLE_END_TEXT = "〇性別"
 #TABLE_END_TEXT = "今後の調査の状況"
 

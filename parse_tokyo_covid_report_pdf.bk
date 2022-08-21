@@ -33,39 +33,36 @@ def main():
     # 指定範囲内の LTTextLine を読み取り
     texts = parse_txt(args.filename)
     first_page_texts = next(texts)
-    
-    try:
-        start_box = next(filter(lambda b: TABLE_START_TEXT in b.get_text(), first_page_texts))
-        end_box = min(filter(lambda b: TABLE_END_TEXT in b.get_text(), first_page_texts), key=lambda b: b.y1)
-        logger.warning(start_box.y1)
-        logger.warning(end_box.y1)
-        # PDF は左下原点のため、START のほうが Y が大きい。
-        tabel_texts = filter(lambda b: end_box.y1 < b.y1 <= start_box.y1, first_page_texts)
+    start_box = next(filter(lambda b: TABLE_START_TEXT in b.get_text(), first_page_texts))
+    end_box = min(filter(lambda b: TABLE_END_TEXT in b.get_text(), first_page_texts),
+                  key=lambda b: b.y1)
+    logger.warning(start_box.y1)
+    logger.warning(end_box.y1)
+    # PDF は左下原点のため、START のほうが Y が大きい。
+    tabel_texts = filter(lambda b: end_box.y1 < b.y1 <= start_box.y1, first_page_texts)
 
-        # 読み取った LTTextLine を 行ごとに区分け
-        lines = defaultdict(list)
-        for table_text in tabel_texts:
-            t_list = table_text.get_text().strip().split()  # たまに一つの LTTextLine に複数テキストがあるので split
-            #t_list = table_text.get_text().split()
-            #lines[table_text.y1].extend(t_list)
-            if len(str(t_list)) > 0:
-                #lines[table_text.y1].extend([i for i in t_list if '(' not in i and not len(i) and len(i) < 7])
-                #logger.warning("lines:" + str([i for i in t_list if '(' not in i and not len(i) and len(i) < 7]))
+    # 読み取った LTTextLine を 行ごとに区分け
+    lines = defaultdict(list)
+    for table_text in tabel_texts:
+        t_list = table_text.get_text().strip().split()  # たまに一つの LTTextLine に複数テキストがあるので split
+        #t_list = table_text.get_text().split()
+        #lines[table_text.y1].extend(t_list)
+        if len(str(t_list)) > 0:
+            #lines[table_text.y1].extend([i for i in t_list if '(' not in i and not len(i) and len(i) < 7])
+            #logger.warning("lines:" + str([i for i in t_list if '(' not in i and not len(i) and len(i) < 7]))
 
-                #mlist=[i for i in t_list if '(' not in i and len(i) < 7]
-                mlist=[i for i in t_list if '(' not in i]
+#            mlist=[i for i in t_list if '(' not in i and len(i) < 7]
+            mlist=[i for i in t_list if '(' not in i]
 
-                if len(mlist) > 0:
-                    lines[table_text.y1].extend(mlist)
-                    mlist.clear()
+            if len(mlist) > 0:
+                lines[table_text.y1].extend(mlist)
+                mlist.clear()
 
-        # 各行で対応する要素を出力
-        for k1, k2 in pairs(lines):
-            for place, count in zip(lines[k1], lines[k2]):
-                print(f"{place},{count.replace(',', '')}")
-    except:
-        first_page_texts = next(texts)
-        print(f"{first_page_texts}")
+    # 各行で対応する要素を出力
+    for k1, k2 in pairs(lines):
+        for place, count in zip(lines[k1], lines[k2]):
+            print(f"{place},{count.replace(',', '')}")
+
 
 def pairs(iterable, c=2):
     """
