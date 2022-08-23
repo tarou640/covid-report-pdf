@@ -10,7 +10,9 @@ fi
 # 市区町村別の感染者情報
 # PDF から CSV を生成
 NEW_CSV_FILE=${NEW_PDF_FILE//pdf/csv}
-./parse_tokyo_covid_report_pdf.py ${NEW_PDF_FILE} > ${NEW_CSV_FILE}
+#./parse_tokyo_covid_report_pdf.py ${NEW_PDF_FILE} > ${NEW_CSV_FILE}
+./parse_tokyo_covid_report_pdf.py ${NEW_PDF_FILE} > temp.csv
+./parse_tokyo_covid_report_pdf_after.py temp.csv > ${NEW_CSV_FILE}
 
 # もしファイル名の末尾に数字がついていたら、日付のみの csv も作る
 DAY_CSV_FILE=${NEW_CSV_FILE:0:12}.csv
