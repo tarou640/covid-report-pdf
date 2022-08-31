@@ -23,7 +23,9 @@ fi
 # 年齢別の感染者情報
 # PDF から CSF（便宜上CSFとしたけど中身はCSV）を生成
 NEW_CSF_FILE=${NEW_PDF_FILE//pdf/csf}
-./parse_tokyo_covid_report_age.py ${NEW_PDF_FILE} > ${NEW_CSF_FILE}
+#./parse_tokyo_covid_report_age.py ${NEW_PDF_FILE} > ${NEW_CSF_FILE}
+./parse_tokyo_covid_report_age.py ${NEW_PDF_FILE} > temp.csf
+./parse_tokyo_covid_report_age_after.py temp.csf > ${NEW_CSF_FILE}
 
 # もしファイル名の末尾に数字がついていたら、日付のみの csf も作る
 DAY_CSF_FILE=${NEW_CSF_FILE:0:12}.csf

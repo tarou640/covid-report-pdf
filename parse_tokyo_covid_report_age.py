@@ -18,7 +18,7 @@ from pdfminer.pdfpage import PDFPage
 
 logger = logging.getLogger(__name__)
 
-TABLE_START_TEXT = "10歳未満"
+TABLE_START_TEXT = "年代"
 #TABLE_END_TEXT = "性別"
 TABLE_END_TEXT = "【参考】検査件数"
 #TABLE_END_TEXT = "都内発生数"
@@ -47,30 +47,36 @@ def main():
 
     # 読み取った LTTextLine を 行ごとに区分け
     lines = defaultdict(list)
+
     for table_text in tabel_texts:
-        t_list = table_text.get_text().strip().split()  # たまに一つの LTTextLine に複数テキストがあるので split
+#        logger.warning("lines:" + table_text.get_text())
+
+        print(f"{table_text.get_text()}")
+
+##        t_list = table_text.get_text().strip().split()  # たまに一つの LTTextLine に複数テキストがあるので split
         #t_list = table_text.get_text().split()
         #lines[table_text.y1].extend(t_list)
-        if len(str(t_list)) > 0:
+##        if len(str(t_list)) > 0:
             #lines[table_text.y1].extend([i for i in t_list if '(' not in i and not len(i) and len(i) < 7])
 #            logger.warning("lines:" + str([i for i in t_list if '(' not in i and not len(i) and len(i) < 7]))
 
 #            mlist=[i for i in t_list if '(' not in i and len(i) < 7]
 #            mlist=[i for i in t_list if '(' not in i]
-            mlist=[i for i in t_list]
+##            mlist=[i for i in t_list]
             
-            if len(mlist) > 0:
-                lines[table_text.y1].extend(mlist)
-                mlist.clear()
+##            if len(mlist) > 0:
+##                lines[table_text.y1].extend(mlist)
+##                mlist.clear()
 #
 #        t_list = table_text.get_text().strip().split()  # たまに一つの LTTextLine に複数テキストがあるので split
 #
 #        lines[table_text.y1].extend(t_list)
 
-    # 各行で対応する要素を出力
-    for k1, k2 in pairs(lines):
-        for place, count in zip(lines[k1], lines[k2]):
-            print(f"{place},{count.replace(',', '')}")
+##    # 各行で対応する要素を出力
+##    for k1, k2 in pairs(lines):
+##        for place, count in zip(lines[k1], lines[k2]):
+##            print(f"{place},{count.replace(',', '')}")
+
 
 
 def pairs(iterable, c=2):
