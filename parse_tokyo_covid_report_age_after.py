@@ -111,9 +111,10 @@ def main():
         strSplit_sub = strSplit_for.split();
         for strSplit_sub_for in strSplit_sub:
             strSplit_sub_for = strSplit_sub_for.replace(",", "")
+            # logger.warning("strSplit_sub_for:" + strSplit_sub_for + " || getStartFlg:" + str(getStartFlg));
             if strSplit_sub_for == '合計' or strSplit_sub_for == '登録ｾﾝﾀｰ':
                 getStartFlg += 1;
-            elif getStartFlg == 2 and isonlynum(strSplit_sub_for) == True:
+            elif getStartFlg > 1 and isonlynum(strSplit_sub_for) == True:
                 cntTmpNum += int(strSplit_sub_for);
                 cntTmpNumCnt += 1;
                 if cntTmpNumCnt == 3:
@@ -148,6 +149,7 @@ def main():
                     getTmpNumFlg = 1;
                 elif cntTmpNumCnt == 14:
                     # 不明
+                    strSplitNum.append("0");
                     getTmpNumFlg = 1;
                 else:
                     getTmpNumFlg = 0;
@@ -168,7 +170,7 @@ def main():
     
     csvData = "";
     i = 0;
-    while i < cntSplitNum:
+    while i < cntSplitNum + 1:
         csvData = csvData + getAgeName(i) + "," + strSplitNum[i]  + "\n";
         i = i + 1;
     csvData = csvData[0: len(csvData) - 1];
@@ -199,9 +201,9 @@ def getAgeName(cnt):
         sRet = "80代"
     elif cnt == 9:
         sRet = "90代"
-#     elif cnt == 10:
-#         sRet = "100歳以上"
     elif cnt == 10:
+        sRet = "100歳以上"
+    elif cnt == 11:
         sRet = "不明"
 
     return sRet
