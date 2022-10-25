@@ -111,7 +111,7 @@ def main():
         strSplit_sub = strSplit_for.split();
         for strSplit_sub_for in strSplit_sub:
             strSplit_sub_for = strSplit_sub_for.replace(",", "")
-            if strSplit_sub_for == '合計':
+            if strSplit_sub_for == '合計' or strSplit_sub_for == '登録ｾﾝﾀｰ':
                 getStartFlg += 1;
             elif getStartFlg == 2 and isonlynum(strSplit_sub_for) == True:
                 cntTmpNum += int(strSplit_sub_for);
