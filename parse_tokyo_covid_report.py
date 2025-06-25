@@ -2,6 +2,7 @@ import sys
 import urllib.request
 import re
 
+#
 def fetch_html(url):
     with urllib.request.urlopen(url) as response:
         return response.read().decode('utf-8', errors='replace')

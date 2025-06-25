@@ -3,7 +3,7 @@
 TARGET_URL="https://survey.tmiph.metro.tokyo.lg.jp/epidinfo/weeklyhc.do"
 TEMP_FILE="temp.csv"
 
-# 更新日付 をとってくる
+# 更新日付をとってくる
 NEW_CSV_FILE=$(./parse_tokyo_covid_report_update.py ${TARGET_URL})
 if [ -z "$NEW_CSV_FILE" ]; then
   echo "エラー: NEW_CSV_FILE が未設定または空です。"
