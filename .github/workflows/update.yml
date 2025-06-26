@@ -49,7 +49,7 @@ jobs:
         git fetch origin
         git checkout master
         ./run.sh  || exit $(($? - 255))
-        git add csv/*.csv
+        git add dat/*.dat
         ./runrm.sh
         git commit -m 'Update by GitHub Actions'
         git push origin master
