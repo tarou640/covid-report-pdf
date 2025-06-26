@@ -26,4 +26,4 @@ if [ ! -s "$NEW_DAT_FILE" ]; then
 fi
 
 # latest.csv のコピーを生成
-cp "${NEW_DAT_FILE}" csv/latest.dat
+cp "${NEW_DAT_FILE}" dat/latest.dat

@@ -23,7 +23,7 @@ on:
     #- cron: "* * * 12 *"  # 20:00 - 24:00 JST
     
     #- cron: "*/5 15 * * *"  # 0:00 - 1:00 5分おきに実行 JST テスト用
-    - cron: "*/5 12-15 * * *"  # 18:00 - 19:00 5分おきに実行 JST テスト用
+    - cron: "*/5 14-16 * * *"  # 18:00 - 19:00 5分おきに実行 JST テスト用
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -49,6 +49,10 @@ jobs:
         git status
         git fetch origin
         git checkout master
+        git update-index --add --chmod=+x ./run.sh
+        git update-index --add --chmod=+x ./runrm.sh
+        git update-index --add --chmod=+x ./parse_tokyo_covid_report.py
+        git update-index --add --chmod=+x ./parse_tokyo_covid_report_update.py
         ./run.sh  || exit $(($? - 255))
         git add dat/*.dat
         ./runrm.sh
