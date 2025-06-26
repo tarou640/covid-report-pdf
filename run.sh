@@ -3,7 +3,7 @@
 TARGET_URL="https://survey.tmiph.metro.tokyo.lg.jp/epidinfo/weeklyhc.do"
 TEMP_FILE="temp.dat"
 
-# 更新日付をとってくる
+# 更新日付 をとってくる
 NEW_DAT_FILE=$(./parse_tokyo_covid_report_update.py ${TARGET_URL})
 if [ -z "$NEW_DAT_FILE" ]; then
   echo "エラー: NEW_DAT_FILE が未設定または空です。"
