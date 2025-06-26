@@ -48,8 +48,8 @@ jobs:
         git status
         git fetch origin
         git checkout master
-        ./run.sh  || exit $(($? - 255))
+        sh ./run.sh  || exit $(($? - 255))
         git add dat/*.dat
-        ./runrm.sh
+        sh ./runrm.sh
         git commit -m 'Update by GitHub Actions'
         git push origin master
