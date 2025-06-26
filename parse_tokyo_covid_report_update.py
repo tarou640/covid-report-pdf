@@ -29,7 +29,7 @@ def main():
         html = fetch_html(url)
         end_date = extract_end_date(html)
         if end_date:
-            local_path = Path("csv") / f"{end_date}.csv"
+            local_path = Path("dat") / f"{end_date}.dat"
             print(local_path)
         else:
             print("")

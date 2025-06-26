@@ -3,12 +3,12 @@
 # 古いファイルを削除
 echo "## 不要ファイル削除処理 開始"
 
-DELETE_FILE_MAX=50
+DELETE_FILE_MAX=30
 
-# csvファイル
-echo "## 削除処理（csv）"
+# datファイル
+echo "## 削除処理（dat）"
 
-TARGET_DIR=../csv
+TARGET_DIR=../dat
 cd $TARGET_DIR
 FILE_LIST=`ls "-r"`
 
