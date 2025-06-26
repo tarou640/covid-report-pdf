@@ -49,10 +49,10 @@ jobs:
         git status
         git fetch origin
         git checkout master
-        git update-index --add --chmod=+x ./run.sh
-        git update-index --add --chmod=+x ./runrm.sh
-        git update-index --add --chmod=+x ./parse_tokyo_covid_report.py
-        git update-index --add --chmod=+x ./parse_tokyo_covid_report_update.py
+        chmod +x ./run.sh
+        chmod +x ./runrm.sh
+        chmod +x ./parse_tokyo_covid_report.py
+        chmod +x ./parse_tokyo_covid_report_update.py
         ./run.sh  || exit $(($? - 255))
         git add dat/*.dat
         ./runrm.sh
