@@ -23,7 +23,7 @@ on:
     #- cron: "* * * 12 *"  # 20:00 - 24:00 JST
     
     #- cron: "*/5 15 * * *"  # 0:00 - 1:00 5分おきに実行 JST テスト用
-    - cron: "*/5 9-10 * * *"  # 18:00 - 19:00 5分おきに実行 JST テスト用
+    #- cron: "*/5 9-10 * * *"  # 18:00 - 19:00 5分おきに実行 JST テスト用
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
