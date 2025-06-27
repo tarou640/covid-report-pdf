@@ -11,7 +11,7 @@ if [ -z "$NEW_DAT_FILE" ]; then
 fi
 if [ -e "$NEW_DAT_FILE" ]; then
   echo "エラー: ファイル '$NEW_DAT_FILE' はすでに存在しています。"
-  exit 0
+  exit 255
 fi
 
 # 都の感染者情報から市区町村別の感染者情報を抜粋する
