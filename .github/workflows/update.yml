@@ -10,6 +10,8 @@ on:
 #  pull_request:
 #    branches: [ master ]
   schedule:
+    - cron: "*/30 10-11 * * *"  # 19:00 - 20:00 30分おきに実行 JST テスト用
+
     #- cron: "0 10-14 * * *"  # 19:00 - 23:00 JST リリース用
     
     #- cron: "15 9-14 * * *"  # 18:30 - 23:30 JST テスト用
@@ -23,7 +25,6 @@ on:
     #- cron: "* * * 12 *"  # 20:00 - 24:00 JST
     
     #- cron: "*/5 15 * * *"  # 0:00 - 1:00 5分おきに実行 JST テスト用
-    - cron: "*/15 * * * *"  # 18:00 - 19:00 5分おきに実行 JST テスト用
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:

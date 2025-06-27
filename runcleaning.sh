@@ -29,6 +29,6 @@ do
   fi
  fi
 done
-echo "削除ファイル数（csv）:"${DELETE_FILE_CNT}""
+echo "削除ファイル数（dat）:"${DELETE_FILE_CNT}""
 
 echo "## 不要ファイル削除処理 終了"
