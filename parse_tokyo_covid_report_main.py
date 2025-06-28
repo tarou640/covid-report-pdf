@@ -54,7 +54,7 @@ def extract_24_values(html, keyword):
     while len(values) < 24:
         values.append("0")
 
-    return f"{keyword}/" + "/".join(values)
+    return f"{keyword}/" + "/".join(values) + ","
 
 def main():
     if len(sys.argv) != 2:
@@ -74,7 +74,7 @@ def main():
 
         # 追加処理：対象期間の終了日を最初に出力
         period_info = extract_period_end_date(html)
-        print(period_info)
+        print(period_info + ",")
 
         # 各キーワードのデータ出力
         for keyword in keywords:
