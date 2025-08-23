@@ -25,6 +25,9 @@ def extract_24_values(html, keyword):
     td_tag = '<TD class="padright">'
     end_tag = '</TD>'
 
+    if keyword == "定点数":
+        td_tag = '<TD class="epidNameCell" style="text-align: right;">'
+
     start_pos = html.find(keyword)
     if start_pos == -1:
         return f"{keyword}/(キーワード未検出)"
@@ -63,7 +66,7 @@ def main():
 
     url = sys.argv[1]
     keywords = [
-        "合計", "千代田", "中央区", "みなと", "新宿区", "文京", "台東", "墨田区", "江東区",
+        "合計", "定点数","千代田", "中央区", "みなと", "新宿区", "文京", "台東", "墨田区", "江東区",
         "品川区", "目黒区", "大田区", "世田谷", "渋谷区", "中野区", "杉並", "池袋",
         "北区", "荒川区", "板橋区", "練馬区", "足立", "葛飾区", "江戸川",
         "八王子市", "町田市", "西多摩", "南多摩", "多摩立川", "多摩府中", "多摩小平", "島しょ"
